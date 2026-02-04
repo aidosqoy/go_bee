@@ -7,10 +7,9 @@ import (
 
 // Circle вычисляет площадь и периметр круга по радиусу
 func Circle(radius float64) (area, perimeter float64) {
-	// TODO: реализуй функцию
-	// Используй math.Pi для числа π
-	_ = math.Pi // удали эту строку после реализации
-	return
+	area = math.Pi * radius * radius
+	perimeter = 2 * math.Pi * radius
+	return area, perimeter
 }
 
 func main() {

@@ -2,16 +2,14 @@ package main
 
 import "fmt"
 
-// swap принимает два целых числа и возвращает их в обратном порядке
 func swap(a, b int) (int, int) {
-	// TODO: реализуй функцию
-	return 0, 0
+	return b, a
 }
 
 func main() {
 	x, y := 10, 20
-	fmt.Println("До swap:", x, y)
+	fmt.Println("До swap:", x, y) // До swap: 10 20
 
 	x, y = swap(x, y)
-	fmt.Println("После swap:", x, y)
+	fmt.Println("После swap:", x, y) // После swap: 20 10
 }
