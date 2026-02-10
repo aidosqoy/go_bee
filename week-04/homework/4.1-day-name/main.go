@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-// DayName возвращает название дня недели по номеру (1-7)
 func DayName(n int) string {
 	// TODO: реализуй с помощью switch
 	switch n {

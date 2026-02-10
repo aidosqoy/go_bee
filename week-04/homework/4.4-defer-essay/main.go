@@ -31,7 +31,6 @@ TODO: Напиши своё объяснение defer здесь
 */
 
 func main() {
-	// Демонстрация работы defer
 	fmt.Println("Начало функции main")
 
 	defer fmt.Println("Это выполнится последним (defer 1)")

@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-// Grade переводит баллы в буквенную оценку
 func Grade(score int) string {
 	// TODO: реализуй с помощью switch без условия
 	switch {
