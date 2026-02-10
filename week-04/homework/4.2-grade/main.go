@@ -10,7 +10,12 @@ func Grade(score int) string {
 		return "Некорректный балл"
 	case score >= 90:
 		return "A"
-	// TODO: добавь остальные case
+	case score >= 80 && score <= 89:
+		return "B"
+	case score >= 70 && score <= 79:
+		return "C"
+	case score >= 60 && score <= 69:
+		return "D"
 	default:
 		return "F"
 	}
