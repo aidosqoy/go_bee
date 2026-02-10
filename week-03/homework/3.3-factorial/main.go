@@ -12,13 +12,14 @@ func Factorial(n int) (int, error) {
 	// 1. Проверь на отрицательное число → вернуть ошибку
 	// 2. 0! = 1
 	// 3. n! = 1 * 2 * ... * n
-
+	sum := 1
 	if n < 0 {
 		return 0, errors.New("факториал отрицательного числа не определён")
 	}
-
-	// TODO: вычисли факториал
-	return 0, nil
+	for i := 2; i <= n; i++ {
+		sum *= i
+	}
+	return sum, nil
 }
 
 func main() {

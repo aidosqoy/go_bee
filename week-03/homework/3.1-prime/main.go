@@ -5,7 +5,17 @@ import "fmt"
 // IsPrime проверяет, является ли число простым
 func IsPrime(n int) bool {
 	// TODO: реализуй функцию
+	count := 0
+	if n >= 2 {
+		for i := 1; i <= n; i++ {
+			if n%i == 0 {
+				count++
+			}
+		}
+		return count <= 2
+	}
 	return false
+
 }
 
 func main() {
