@@ -6,28 +6,48 @@ import "fmt"
 func Sum(arr [5]int) int {
 	// TODO: реализуй функцию
 	// Пройди по всем элементам и сложи их
-	return 0
+	sum := 0
+	for i := 0; i < len(arr); i++ {
+		sum += arr[i]
+	}
+	return sum
 }
 
 // Average возвращает среднее арифметическое элементов массива
 func Average(arr [5]int) float64 {
 	// TODO: реализуй функцию
 	// Используй Sum и подели на количество элементов
-	return 0.0
+	sum := 0
+	for i := 0; i < len(arr); i++ {
+		sum += arr[i]
+	}
+	return float64(sum / 5)
 }
 
 // Max возвращает максимальный элемент массива
 func Max(arr [5]int) int {
 	// TODO: реализуй функцию
 	// Пройди по массиву и найди максимум
-	return 0
+	max := arr[0]
+	for i := 0; i < len(arr); i++ {
+		if max < arr[i] {
+			max = arr[i]
+		}
+	}
+	return max
 }
 
 // Min возвращает минимальный элемент массива
 func Min(arr [5]int) int {
 	// TODO: реализуй функцию
 	// Пройди по массиву и найди минимум
-	return 0
+	min := arr[0]
+	for i := 0; i < len(arr); i++ {
+		if min > arr[i] {
+			min = arr[i]
+		}
+	}
+	return min
 }
 
 func main() {

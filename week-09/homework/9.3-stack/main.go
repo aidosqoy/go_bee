@@ -17,6 +17,7 @@ func NewStack() *Stack {
 func (s *Stack) Push(value int) {
 	// TODO: реализуй метод
 	// Используй append
+	s.items = append(s.items, value)
 }
 
 // Pop удаляет и возвращает верхний элемент
@@ -25,26 +26,37 @@ func (s *Stack) Pop() (int, bool) {
 	// TODO: реализуй метод
 	// Проверь, не пуст ли стек
 	// Верни последний элемент и укороти слайс
-	return 0, false
+	if len(s.items) == 0 {
+		return 0, false
+	}
+	val := s.items[len(s.items)-1]
+	s.items = s.items[:len(s.items)-1]
+	return val, true
 }
 
 // Peek возвращает верхний элемент без удаления
 // Возвращает (value, true) или (0, false) если стек пуст
 func (s *Stack) Peek() (int, bool) {
 	// TODO: реализуй метод
+	if len(s.items) != 0 {
+		return s.items[len(s.items)-1], true
+	}
 	return 0, false
 }
 
 // IsEmpty возвращает true если стек пуст
 func (s *Stack) IsEmpty() bool {
 	// TODO: реализуй метод
-	return true
+	if len(s.items) == 0 {
+		return true
+	}
+	return false
 }
 
 // Size возвращает количество элементов в стеке
 func (s *Stack) Size() int {
 	// TODO: реализуй метод
-	return 0
+	return len(s.items)
 }
 
 func main() {

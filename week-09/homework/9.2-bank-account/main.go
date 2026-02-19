@@ -15,13 +15,17 @@ type Account struct {
 func NewAccount(owner string, initial float64) *Account {
 	// TODO: реализуй функцию
 	// Создай и верни указатель на Account с заполненными полями
-	return &Account{}
+	return &Account{owner, initial}
 }
 
 // Deposit пополняет счёт на указанную сумму
 func (a *Account) Deposit(amount float64) error {
 	// TODO: реализуй метод
 	// Проверь, что amount > 0
+	if amount > 0 {
+		a.Balance += amount
+		return nil
+	}
 	return errors.New("not implemented")
 }
 
@@ -29,6 +33,10 @@ func (a *Account) Deposit(amount float64) error {
 func (a *Account) Withdraw(amount float64) error {
 	// TODO: реализуй метод
 	// Проверь, что amount > 0 и достаточно средств
+	if amount > 0 && a.Balance >= amount {
+		a.Balance -= amount
+		return nil
+	}
 	return errors.New("not implemented")
 }
 
@@ -36,14 +44,19 @@ func (a *Account) Withdraw(amount float64) error {
 func (a *Account) Transfer(to *Account, amount float64) error {
 	// TODO: реализуй метод
 	// Используй Withdraw и Deposit
-	return errors.New("not implemented")
+	err := a.Withdraw(amount)
+	if err != nil {
+		return errors.New("not implemented")
+	}
+	to.Deposit(amount)
+	return nil
 }
 
 // Statement возвращает выписку по счёту
 func (a Account) Statement() string {
 	// TODO: реализуй метод
 	// Формат: "Счёт: {Owner}, Баланс: {Balance:.2f}"
-	return ""
+	return "Account: " + a.Owner + ", Balance: " + fmt.Sprintf("%f", a.Balance)
 }
 
 func main() {

@@ -23,6 +23,11 @@ func PrintFullInfo(p Person) {
 	// Вывести: имя, возраст, email, город, улицу, дом
 	fmt.Printf("Имя: %s\n", p.Name)
 	fmt.Printf("Возраст: %d\n", p.Age)
+	fmt.Printf("Почта: %v\n", p.Email)
+	fmt.Printf("Город: %v\n", p.Address.City)
+	fmt.Printf("Улица: %v\n", p.Address.Street)
+	fmt.Printf("Дом: %v\n", p.Address.Building)
+
 	// TODO: добавь остальные поля
 }
 

@@ -17,6 +17,15 @@ func init() {
 	// Создай map и добавь операции: "+", "-", "*", "/"
 	// Для деления верни 0 при делении на ноль (или обработай в Calculate)
 	operations = make(map[string]Operation)
+	operations["+"] = func(a, b int) int { return a + b }
+	operations["-"] = func(a, b int) int { return a - b }
+	operations["*"] = func(a, b int) int { return a * b }
+	operations["/"] = func(a, b int) int {
+		if b != 0 {
+			return a / b
+		}
+		return 0
+	}
 }
 
 // Calculate выполняет операцию op над числами a и b
@@ -25,12 +34,19 @@ func Calculate(op string, a, b int) (int, error) {
 	// Найди операцию в map
 	// Если не найдена — верни ошибку
 	// Для деления проверь b != 0
+	for k, _ := range operations {
+		if k == op {
+			return operations[k](a, b), nil
+		}
+	}
 	return 0, errors.New("not implemented")
 }
 
 // RegisterOperation добавляет новую операцию в калькулятор
 func RegisterOperation(op string, fn Operation) {
 	// TODO: реализуй функцию
+	operations[op] = fn
+
 }
 
 func main() {

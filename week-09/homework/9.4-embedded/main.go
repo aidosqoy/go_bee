@@ -12,7 +12,7 @@ type Person struct {
 func (p Person) Greet() string {
 	// TODO: реализуй метод
 	// Формат: "Привет, меня зовут {Name}"
-	return ""
+	return "Hi, my name is " + p.Name
 }
 
 // Employee представляет сотрудника (встраивает Person)
@@ -26,13 +26,14 @@ type Employee struct {
 func (e Employee) Work() string {
 	// TODO: реализуй метод
 	// Формат: "{Name} работает как {Position}"
-	return ""
+	return e.Name + " works as " + e.Position
 }
 
 // GiveRaise повышает зарплату на указанный процент
 func (e *Employee) GiveRaise(percent float64) {
 	// TODO: реализуй метод
 	// Увеличь Salary на percent процентов
+	e.Salary = e.Salary * (percent + 100) / 100
 }
 
 // Manager представляет менеджера (встраивает Employee)
@@ -44,12 +45,13 @@ type Manager struct {
 // AddToTeam добавляет сотрудника в команду
 func (m *Manager) AddToTeam(name string) {
 	// TODO: реализуй метод
+	m.Team = append(m.Team, name)
 }
 
 // TeamSize возвращает размер команды
 func (m Manager) TeamSize() int {
 	// TODO: реализуй метод
-	return 0
+	return len(m.Team)
 }
 
 func main() {

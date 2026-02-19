@@ -19,14 +19,13 @@ type Circle struct {
 // Area возвращает площадь круга
 func (c Circle) Area() float64 {
 	// TODO: реализуй метод
-	_ = math.Pi // подсказка
-	return 0
+	return c.Radius * c.Radius * math.Pi
 }
 
 // Perimeter возвращает периметр круга
 func (c Circle) Perimeter() float64 {
 	// TODO: реализуй метод
-	return 0
+	return 2 * math.Pi * c.Radius
 }
 
 // Rectangle представляет прямоугольник
@@ -37,13 +36,13 @@ type Rectangle struct {
 // Area возвращает площадь прямоугольника
 func (r Rectangle) Area() float64 {
 	// TODO: реализуй метод
-	return 0
+	return r.Width * r.Height
 }
 
 // Perimeter возвращает периметр прямоугольника
 func (r Rectangle) Perimeter() float64 {
 	// TODO: реализуй метод
-	return 0
+	return 2 * (r.Width + r.Height)
 }
 
 // PrintShapeInfo выводит информацию о любой фигуре
@@ -51,14 +50,18 @@ func PrintShapeInfo(s Shape) {
 	// TODO: реализуй функцию
 	// Выведи тип фигуры, площадь и периметр
 	// Подсказка: для типа используй fmt.Printf("%T", s)
-	fmt.Println(s)
+	fmt.Printf("Type: %T, Area: %v, Perimeter: %v\n", s, s.Area(), s.Perimeter())
 }
 
 // TotalArea возвращает сумму площадей всех фигур
 func TotalArea(shapes []Shape) float64 {
 	// TODO: реализуй функцию
 	// Пройди по всем фигурам и сложи их площади
-	return 0
+	sum := 0.0
+	for _, shape := range shapes {
+		sum += shape.Area()
+	}
+	return sum
 }
 
 func main() {

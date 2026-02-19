@@ -10,7 +10,7 @@ func (ip IPAddr) String() string {
 	// TODO: реализуй метод
 	// Формат: "a.b.c.d"
 	// Используй fmt.Sprintf("%d.%d.%d.%d", ip[0], ip[1], ip[2], ip[3])
-	return ""
+	return fmt.Sprintf("%d.%d.%d.%d", ip[0], ip[1], ip[2], ip[3])
 }
 
 // Duration представляет длительность в секундах
@@ -21,7 +21,7 @@ func (d Duration) String() string {
 	// TODO: реализуй метод
 	// Формат: "Xh Xm Xs"
 	// Раздели на часы (d / 3600), минуты ((d % 3600) / 60), секунды (d % 60)
-	return ""
+	return fmt.Sprintf("hours:%d, minutes:%d, seconds:%d", d/3600, d%3600/60, d%60)
 }
 
 // Book представляет информацию о книге
@@ -35,7 +35,7 @@ type Book struct {
 func (b Book) String() string {
 	// TODO: реализуй метод
 	// Формат: "«Title» (Author, Year)"
-	return ""
+	return fmt.Sprintf("%s (%s, %v)", b.Title, b.Author, b.Year)
 }
 
 func main() {

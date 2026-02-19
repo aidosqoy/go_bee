@@ -10,17 +10,22 @@ type Student struct {
 
 // GroupByGrade группирует студентов по классу
 func GroupByGrade(students []Student) map[int][]Student {
-	// TODO: реализуй функцию
-	// Создай map[int][]Student
-	// Пройди по студентам и добавляй в соответствующий слайс
-	return nil
+	m := make(map[int][]Student)
+	for _, student := range students {
+		m[student.Grade] = append(m[student.Grade], student)
+	}
+	return m
 }
 
 // GroupByFirstLetter группирует слова по первой букве
 func GroupByFirstLetter(words []string) map[rune][]string {
 	// TODO: реализуй функцию
 	// Для получения первой буквы используй []rune(word)[0]
-	return nil
+	m := make(map[rune][]string)
+	for _, word := range words {
+		m[[]rune(word)[0]] = append(m[[]rune(word)[0]], word)
+	}
+	return m
 }
 
 // GetStudentNames возвращает имена студентов указанного класса
@@ -28,7 +33,11 @@ func GetStudentNames(groups map[int][]Student, grade int) []string {
 	// TODO: реализуй функцию
 	// Получи слайс студентов по grade
 	// Извлеки только имена
-	return nil
+	s := make([]string, len(groups[grade]))
+	for i, group := range groups[grade] {
+		s[i] = group.Name
+	}
+	return s
 }
 
 func main() {
@@ -55,5 +64,8 @@ func main() {
 	words := []string{"apple", "apricot", "banana", "avocado", "blueberry"}
 	byLetter := GroupByFirstLetter(words)
 	fmt.Println("Слова:", words)
-	fmt.Println("По первой букве:", byLetter)
+	fmt.Println("По первой букве:")
+	for k, v := range byLetter {
+		fmt.Printf("%c: %v\n", k, v)
+	}
 }
