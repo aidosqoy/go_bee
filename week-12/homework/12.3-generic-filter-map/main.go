@@ -9,7 +9,13 @@ func Filter[T any](slice []T, predicate func(T) bool) []T {
 	// 2. Пройди по всем элементам
 	// 3. Если predicate(element) == true, добавь в результат
 	// 4. Верни результат
-	return nil
+	s := []T{}
+	for i := 0; i < len(slice); i++ {
+		if predicate(slice[i]) {
+			s = append(s, slice[i])
+		}
+	}
+	return s
 }
 
 // Map преобразует каждый элемент слайса с помощью функции transform
@@ -19,7 +25,11 @@ func Map[T, R any](slice []T, transform func(T) R) []R {
 	// 2. Пройди по всем элементам
 	// 3. Преобразуй каждый элемент: result[i] = transform(slice[i])
 	// 4. Верни результат
-	return nil
+	result := make([]R, len(slice))
+	for i, v := range slice {
+		result[i] = transform(v)
+	}
+	return result
 }
 
 // Reduce сворачивает слайс в одно значение
@@ -29,7 +39,11 @@ func Reduce[T, R any](slice []T, initial R, reducer func(R, T) R) R {
 	// 2. Пройди по всем элементам
 	// 3. Обнови аккумулятор: acc = reducer(acc, element)
 	// 4. Верни аккумулятор
-	return initial
+	acc := initial
+	for _, v := range slice {
+		acc = reducer(acc, v)
+	}
+	return acc
 }
 
 // Find ищет первый элемент, для которого predicate вернул true
@@ -39,6 +53,11 @@ func Find[T any](slice []T, predicate func(T) bool) (T, bool) {
 	// 2. Если predicate(element) == true, верни (element, true)
 	// 3. Если ничего не найдено, верни (zero, false)
 	var zero T
+	for _, v := range slice {
+		if predicate(v) {
+			return v, true
+		}
+	}
 	return zero, false
 }
 
@@ -46,6 +65,11 @@ func Find[T any](slice []T, predicate func(T) bool) (T, bool) {
 func Any[T any](slice []T, predicate func(T) bool) bool {
 	// TODO: реализуй функцию
 	// Верни true при первом совпадении
+	for _, v := range slice {
+		if predicate(v) {
+			return true
+		}
+	}
 	return false
 }
 
@@ -54,6 +78,11 @@ func Any[T any](slice []T, predicate func(T) bool) bool {
 func All[T any](slice []T, predicate func(T) bool) bool {
 	// TODO: реализуй функцию
 	// Верни false при первом несовпадении
+	for _, v := range slice {
+		if !predicate(v) {
+			return false
+		}
+	}
 	return true
 }
 

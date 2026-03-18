@@ -11,7 +11,8 @@ type Stack[T any] struct {
 func NewStack[T any]() *Stack[T] {
 	// TODO: реализуй функцию
 	// Создай и верни указатель на новый Stack с пустым слайсом
-	return nil
+	s := new(Stack[T])
+	return s
 }
 
 // Push добавляет элемент на вершину стека
@@ -19,6 +20,7 @@ func (s *Stack[T]) Push(value T) {
 	// TODO: реализуй метод
 	// Добавь value в конец слайса items
 	// Используй: s.items = append(s.items, value)
+	s.items = append(s.items, value)
 }
 
 // Pop извлекает элемент с вершины стека
@@ -31,7 +33,12 @@ func (s *Stack[T]) Pop() (T, bool) {
 	// 3. Удали последний элемент из слайса: s.items = s.items[:len(s.items)-1]
 	// 4. Верни элемент и true
 	var zero T
-	return zero, false
+	if len(s.items) == 0 {
+		return zero, false
+	}
+	last := s.items[len(s.items)-1]
+	s.items = s.items[:len(s.items)-1]
+	return last, true
 }
 
 // Peek возвращает элемент с вершины без извлечения
@@ -42,19 +49,26 @@ func (s *Stack[T]) Peek() (T, bool) {
 	// 1. Проверь, что стек не пустой
 	// 2. Верни последний элемент без удаления
 	var zero T
-	return zero, false
+	if len(s.items) == 0 {
+		return zero, false
+	}
+	last := s.items[len(s.items)-1]
+	return last, true
 }
 
 // Len возвращает количество элементов в стеке
 func (s *Stack[T]) Len() int {
 	// TODO: реализуй метод
-	return 0
+	return len(s.items)
 }
 
 // IsEmpty проверяет, пуст ли стек
 func (s *Stack[T]) IsEmpty() bool {
 	// TODO: реализуй метод
-	return true
+	if len(s.items) == 0 {
+		return true
+	}
+	return false
 }
 
 // Пример пользовательской структуры для теста
